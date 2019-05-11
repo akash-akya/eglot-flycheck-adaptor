@@ -1,0 +1,10 @@
+#+TITLE: eglot-flycheck-adaptor
+
+Replaces flymake with [[https://www.flycheck.org/en/latest/][flycheck]] for [[https://github.com/joaotavora/eglot/][eglot]] diagnostics.
+
+** How to use?
+Load =eglot-flycheck-adaptor.el=
+
+#+BEGIN_SRC emacs-lisp
+(load "~/.emacs.d/lisp/eglot-flycheck-adaptor.el")
+#+END_SRC
