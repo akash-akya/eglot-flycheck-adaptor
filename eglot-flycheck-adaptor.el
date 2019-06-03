@@ -44,7 +44,6 @@
                (beg (flymake--diag-beg err))
                (buffer (flymake--diag-buffer err))
                (`(,line . ,col) (eglot-flycheck--point->line-col buffer beg)))
-    (message "%s" (flymake--diag-type err))
     (flycheck-error-new-at
      line nil ;; TODO: use column and region
      (pcase (flymake--diag-type err)
