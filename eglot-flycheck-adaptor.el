@@ -51,15 +51,14 @@
        ('eglot-warning 'warning)
        ('eglot-note 'info))
      msg
-     :id "eglot-flycheck"
-     ;; :checker
+     :checker 'eglot
      :buffer buffer
      :filename (buffer-file-name buffer))))
 
 (cl-defun eglot-flycheck--flymake-handle-result (flymake-errors &key region)
-  (funcall eglot-flycheck--fc-callback
-           'finished
-           (mapcar #'eglot-flycheck--fm-error->fc-error flymake-errors)))
+  (let ((result (mapcar #'eglot-flycheck--fm-error->fc-error flymake-errors)))
+    (flycheck-buffer)
+    (funcall eglot-flycheck--fc-callback 'finished result)))
 
 (cl-defun eglot-flycheck-checker (checker callback)
   (setq eglot-flycheck--fc-callback callback)
